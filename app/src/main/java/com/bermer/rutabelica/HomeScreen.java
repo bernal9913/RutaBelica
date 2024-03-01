@@ -25,6 +25,7 @@ public class HomeScreen extends AppCompatActivity {
         registrarse = findViewById(R.id.btn_registrarse);
         contacto = findViewById(R.id.fab_contacto);
 
+
         contacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +40,14 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        iniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeScreen.this, Login.class);
+                startActivity(i);
+            }
+        });
+
     }
     private void showPopup(View anchorView){
 

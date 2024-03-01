@@ -5,9 +5,6 @@
     <string name="btn_registrarse">Registrarse</string>
 
 
-
-
-
     <string-array name="countries_array">
         <item>Mexico</item>
         <item>Estados Unidos</item>

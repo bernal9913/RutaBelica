@@ -3,10 +3,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.AuthResult;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -33,6 +38,7 @@ public class Registro extends AppCompatActivity {
     private DatePickerDialog picker;
 
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,7 @@ public class Registro extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
         // iniciar la db
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         // referenciar los elementos
         startEverything();
         editTextDateOfBirth.setInputType(InputType.TYPE_NULL);
@@ -93,6 +100,7 @@ public class Registro extends AppCompatActivity {
         String dob = editTextDateOfBirth.getText().toString().trim();
         String c = spinnerCountry.getSelectedItem().toString();
 
+        /*
         if (TextUtils.isEmpty(fn) || TextUtils.isEmpty(e) || TextUtils.isEmpty(p) ||
                 TextUtils.isEmpty(rp) || TextUtils.isEmpty(pn) || TextUtils.isEmpty(dob) ||
                 TextUtils.isEmpty(c) || !terms.isChecked()) {
@@ -132,7 +140,35 @@ public class Registro extends AppCompatActivity {
                 // 2024-02-28 22:14:59.793  6949-6949  System.out              com.bermer.rutabelica                I  todo salio mal?
             }
         }
+        */
 
+        if (TextUtils.isEmpty(fn) || TextUtils.isEmpty(e) || TextUtils.isEmpty(p) ||
+                TextUtils.isEmpty(rp) || TextUtils.isEmpty(pn) || TextUtils.isEmpty(dob) ||
+                !terms.isChecked()) {
+            Toast.makeText(Registro.this, "Todos los campos deben estar llenos y aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!p.equals(rp)) {
+            Toast.makeText(Registro.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Crear la cuenta de usuario con Firebase Authentication
+        mAuth.createUserWithEmailAndPassword(e, p)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Registro exitoso
+                            Toast.makeText(Registro.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                            //Intent intent = new Intent(Registro.this, Login.class);
+                            //startActivity(intent);
+                            finish();
+                        } else {
+                            // Error durante el registro
+                            Toast.makeText(Registro.this, "Error durante el registro: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
     }
 }
