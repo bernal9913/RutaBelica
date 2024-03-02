@@ -3,6 +3,7 @@ package com.bermer.rutabelica;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,6 +21,7 @@ public class Login extends AppCompatActivity {
     private Button buttonLogin;
 
     private FirebaseAuth mAuth;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,11 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()){
                             System.out.println("tofain");
                             Toast.makeText(Login.this, "Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("isLoggedIn", true);
+                            editor.apply();
+                            // Redirigir al usuario a la actividad principal
+                            goToMainActivity();
                             finish();
                         }else {
                             Toast.makeText(Login.this, ":(", Toast.LENGTH_SHORT).show();
