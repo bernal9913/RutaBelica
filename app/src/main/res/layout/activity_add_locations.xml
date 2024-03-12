@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Agregar un lugar"
+            android:textSize="120px"
+            />
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="25dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="25dp"
+            />
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextTitle"
+            android:hint="Descripción"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="25dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="25dp" />
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextDescription"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/input_bg"
+            android:entries="@array/categorias"
+            android:hint="Categoría"
+            android:paddingLeft="25dp"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/editTextCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerCategory"
+            android:hint="Ciudad"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="25dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="25dp"/>
+
+        <EditText
+            android:id="@+id/editTextState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextCity"
+            android:hint="Estado"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="25dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="25dp"/>
+
+        <EditText
+            android:id="@+id/editTextLatitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextState"
+            android:hint="Latitud"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="25dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="25dp"/>
+
+        <EditText
+            android:id="@+id/editTextLongitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextLatitude"
+            android:hint="Longitud"
+            android:background="@drawable/input_bg"
+            android:paddingLeft="25dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apto para discapacitados" />
+        <RadioGroup
+            android:id="@+id/radioGroupDisabledAccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextLongitude"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonDisabledAccessYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sí" />
+
+            <RadioButton
+                android:id="@+id/radioButtonDisabledAccessNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pet Friendly" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupPetFriendly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioGroupDisabledAccess"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonPetFriendlyYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sí" />
+
+            <RadioButton
+                android:id="@+id/radioButtonPetFriendlyNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextLongitude"
+            android:text="Subir información"
+            />
+
+    </LinearLayout>
+</ScrollView>

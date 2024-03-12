@@ -6,15 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeScreen extends AppCompatActivity {
-    Button iniciarSesion, registrarse;
+    Button iniciarSesion, registrarse, testlugar;
     FloatingActionButton contacto;
     PopupWindow popupWindow;
     @Override
@@ -24,6 +22,7 @@ public class HomeScreen extends AppCompatActivity {
         iniciarSesion = findViewById(R.id.btn_iniciarSesion);
         registrarse = findViewById(R.id.btn_registrarse);
         contacto = findViewById(R.id.fab_contacto);
+        testlugar = findViewById(R.id.buttontest);
 
 
         contacto.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +43,13 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomeScreen.this, Login.class);
+                startActivity(i);
+            }
+        });
+        testlugar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeScreen.this, AddLocation.class);
                 startActivity(i);
             }
         });

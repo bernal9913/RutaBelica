@@ -4,7 +4,14 @@
     <string name="btn_iniciarsesion">Iniciar sesión</string>
     <string name="btn_registrarse">Registrarse</string>
 
-
+    <string-array name="categorias">
+        <item>Turismo</item>
+        <item>Monumentos</item>
+        <item>Museos</item>
+        <item>Aire libre</item>
+        <item>Parques</item>
+        <item>Jardines</item>
+    </string-array>
     <string-array name="countries_array">
         <item>Mexico</item>
         <item>Estados Unidos</item>

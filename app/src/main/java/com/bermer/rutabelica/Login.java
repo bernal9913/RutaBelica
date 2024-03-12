@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
@@ -58,11 +59,15 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()){
                             System.out.println("tofain");
                             Toast.makeText(Login.this, "Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
+                            // Obtener el ID del usuario autenticado
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            String userId = user.getUid();
+
+                            // Almacenar el ID del usuario en las preferencias compartidas
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putBoolean("isLoggedIn", true);
+                            editor.putString("userId", userId);
                             editor.apply();
-                            // Redirigir al usuario a la actividad principal
-                            goToMainActivity();
                             finish();
                         }else {
                             Toast.makeText(Login.this, ":(", Toast.LENGTH_SHORT).show();
