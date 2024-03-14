@@ -22,7 +22,7 @@ public class HomeScreen extends AppCompatActivity {
         iniciarSesion = findViewById(R.id.btn_iniciarSesion);
         registrarse = findViewById(R.id.btn_registrarse);
         contacto = findViewById(R.id.fab_contacto);
-        testlugar = findViewById(R.id.buttontest);
+        //testlugar = findViewById(R.id.buttontest);
 
 
         contacto.setOnClickListener(new View.OnClickListener() {
@@ -46,13 +46,7 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        testlugar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomeScreen.this, AddLocation.class);
-                startActivity(i);
-            }
-        });
+
 
     }
     private void showPopup(View anchorView){
