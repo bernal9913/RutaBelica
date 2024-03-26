@@ -104,6 +104,8 @@ public class Login extends AppCompatActivity {
                                         editor.putBoolean("isAdmin",admin);
                                         editor.apply();
                                         // TODO: agregar el activity main despues de esto
+                                        Intent i = new Intent(Login.this, ListaUbicaciones.class);
+                                        startActivity(i);
                                         finish();
                                     }
                                 }
