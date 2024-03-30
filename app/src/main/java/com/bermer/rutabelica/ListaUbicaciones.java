@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -71,6 +72,7 @@ public class ListaUbicaciones extends AppCompatActivity {
             }
         });
 
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             getLocation();
@@ -100,6 +102,39 @@ public class ListaUbicaciones extends AppCompatActivity {
                         adapter = new MyAdapter(dataList);
                         recyclerView.setAdapter(adapter);
                         updateRecyclerView(dataList);
+
+                        adapter.setOnItemClickListener(new MyAdapter.onItemClickListener() {
+                            @Override
+                            public void onItemClick(DocumentSnapshot document) {
+                                // Crear un Intent para abrir la actividad DetalleActivity
+                                // Pasar el documento seleccionado a la actividad DetalleActivity
+                                // Iniciar la actividad DetalleActivity
+                                String documentid = document.getId();
+                                String titulo = document.getString("titulo");
+                                String descripcion = document.getString("descripcion");
+                                String ciudad = document.getString("ciudad");
+                                String estado = document.getString("estado");
+                                Boolean apto_discapacitados = document.getBoolean("apto_discapacitados");
+                                String categoria = document.getString("categoria");
+                                String latitud = document.getString("latitud");
+                                String longitud = document.getString("longitud");
+                                Boolean pet_friendly = document.getBoolean("pet_friendly");
+
+                                Intent intent = new Intent(ListaUbicaciones.this, DetalleUbicacionActivity.class);
+                                intent.putExtra("documentid", documentid);
+                                intent.putExtra("titulo", titulo);
+                                intent.putExtra("descripcion", descripcion);
+                                intent.putExtra("ciudad", ciudad);
+                                intent.putExtra("estado", estado);
+                                intent.putExtra("apto_discapacitados", apto_discapacitados);
+                                intent.putExtra("categoria", categoria);
+                                intent.putExtra("latitud", latitud);
+                                intent.putExtra("longitud", longitud);
+                                intent.putExtra("pet_friendly", pet_friendly);
+                                startActivity(intent);
+
+                            }
+                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

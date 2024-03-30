@@ -11,12 +11,17 @@ import com.bermer.rutabelica.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.List;
 
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private List<DocumentSnapshot> data;
+    private onItemClickListener listener;
 
     public MyAdapter(List<DocumentSnapshot> data) {
         this.data = data;
+    }
+    public void setOnItemClickListener(onItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -30,6 +35,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(data.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(data.get(position));
+                }
+            }
+        });
     }
 
     @Override
@@ -49,5 +62,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             String title = document.getString("titulo");
             textView.setText(title);
         }
+    }
+    public interface onItemClickListener {
+        void onItemClick(DocumentSnapshot document);
     }
 }

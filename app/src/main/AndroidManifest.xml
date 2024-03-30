@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RutaBelica"
         tools:targetApi="31">
+        <activity
+            android:name=".DetalleUbicacionActivity"
+            android:exported="false" />
         <activity
             android:name=".ListaUbicaciones"
             android:exported="false" />
