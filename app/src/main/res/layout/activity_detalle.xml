@@ -62,7 +62,29 @@
         android:textColor="@color/secondary_text_color"
         android:layout_marginTop="16dp"
         android:text="Pet friendly: Sí/No" />
+<!--
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp" />
+-->
+    <FrameLayout
+        android:id="@+id/map_container"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp" />
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar a ruta" />
 
-    <!-- Puedes agregar más TextViews para mostrar otros detalles del lugar -->
+    <Button
+        android:id="@+id/btnReportar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reportar ubicación" />
 
 </LinearLayout>
