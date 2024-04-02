@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -53,6 +54,8 @@ public class DetalleUbicacionActivity extends AppCompatActivity {
         String latitud = getIntent().getStringExtra("latitud");
         latatitu = Double.parseDouble(latitud);
         longitu = Double.parseDouble(longitud);
+
+        Log.d("Mapa", "Latitud: " + latatitu + " Longitud: " + longitu);
 
         mapView = new MapView(this);
         mapView.onCreate(savedInstanceState);

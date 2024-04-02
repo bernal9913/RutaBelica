@@ -1,6 +1,10 @@
 package com.bermer.rutabelica;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -15,6 +19,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -160,8 +165,46 @@ public class Registro extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Registro exitoso
                             Toast.makeText(Registro.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                            //Intent intent = new Intent(Registro.this, Login.class);
-                            //startActivity(intent);
+
+                            Map<String, Object> users = new HashMap<>();
+                            users.put("fullname", fn);
+                            users.put("email", e);
+                            users.put("phone", pn);
+                            users.put("dob", dob);
+                            users.put("country", c);
+
+                            CollectionReference usersRef = db.collection("users");
+                            usersRef.document(e) // e es el correo electrónico del usuario
+                                    .set(users)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d("Registro_debug", "Documento subido correctamente a Firestore con ID: " + e);
+                                            //Toast.makeText(Registro.this, "Información del usuario subida exitosamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("Registro_debug", "Error al subir documento", e);
+                                            //Toast.makeText(Registro.this, "Error al subir información del usuario", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            /*usersRef.add(users)
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d("Registro_debug", "Documento subido correctamente a Firestore con ID: " + documentReference.getId());
+                                            //Toast.makeText(Registro.this, "Información del lugar subida exitosamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.e("Registro_debug", "Error al subir datos a Firestore: " + e.getMessage());
+                                            //Toast.makeText(AddLocation.this, "Error al subir información del lugar: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });*/
                             finish();
                         } else {
                             // Error durante el registro
