@@ -5,6 +5,7 @@
     <string name="btn_registrarse">Registrarse</string>
 
     <string-array name="categorias">
+        <item>Todas las categorias</item>
         <item>Turismo</item>
         <item>Monumentos</item>
         <item>Museos</item>

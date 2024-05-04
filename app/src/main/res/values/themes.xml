@@ -15,4 +15,7 @@
         <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="ErrorMessage" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorError</item>
+    </style>
 </resources>
