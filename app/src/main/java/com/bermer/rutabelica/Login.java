@@ -1,8 +1,5 @@
 package com.bermer.rutabelica;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,7 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Login extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
     private Button buttonLogin;
-
+    private TextView textViewPassword, textViewCuenta;
     private FirebaseAuth mAuth;
     private SharedPreferences sharedPreferences;
     @Override
@@ -44,13 +45,29 @@ public class Login extends AppCompatActivity {
                 loginUser();
             }
         });
+        textViewCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Login.this, Registro.class);
+                startActivity(i);
+            }
+        });
+        textViewPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Login.this, RecoverPassActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 
     private void startEverything() {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-        buttonLogin = findViewById(R.id.btn_iniciarsesion2);
+        buttonLogin = findViewById(R.id.btnLogin);
+        textViewCuenta = findViewById(R.id.textViewRegister);
+        textViewPassword = findViewById(R.id.textViewForgotPassword);
     }
     private void loginUser(){
         String email = editTextEmail.getText().toString();
