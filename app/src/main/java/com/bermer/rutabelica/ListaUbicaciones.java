@@ -1,7 +1,9 @@
 package com.bermer.rutabelica;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +32,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.android.gms.maps.model.LatLng;
+
+import org.checkerframework.checker.units.qual.A;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,6 +43,7 @@ import java.util.Locale;
 
 public class ListaUbicaciones extends AppCompatActivity {
 
+    private ArrayList<LatLng> ubicaciones = new ArrayList<>();
     private FirebaseFirestore firestore;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private FusedLocationProviderClient fusedLocationClient;
@@ -45,12 +52,12 @@ public class ListaUbicaciones extends AppCompatActivity {
     private Button buttonSearch;
     private RecyclerView recyclerView;
     private MyAdapter adapter;
+    private static final int DETALLE_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_ubicaciones);
-
 
 
         textViewCity = findViewById(R.id.textViewCity);
@@ -61,6 +68,7 @@ public class ListaUbicaciones extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
 
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +139,8 @@ public class ListaUbicaciones extends AppCompatActivity {
                                 intent.putExtra("latitud", latitud);
                                 intent.putExtra("longitud", longitud);
                                 intent.putExtra("pet_friendly", pet_friendly);
-                                startActivity(intent);
+                                intent.putExtra("ubicaciones", ubicaciones);
+                                startActivityForResult(intent, DETALLE_REQUEST_CODE);
 
                             }
                         });
@@ -206,5 +215,20 @@ public class ListaUbicaciones extends AppCompatActivity {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == DETALLE_REQUEST_CODE && resultCode == RESULT_OK) {
+           if (data != null) {
+               String latitud = data.getStringExtra("latitud");
+               String longitud = data.getStringExtra("longitud");
+               String titulot = data.getStringExtra("titulo");
+               Log.d("Mapa", "Titulo: " + titulot + " Latitud: " + latitud + " Longitud: " + longitud);
+               LatLng nuevaUbicacion = new LatLng(Double.parseDouble(latitud), Double.parseDouble(longitud));
+               ubicaciones.add(nuevaUbicacion);
+           }
+        }
     }
 }
