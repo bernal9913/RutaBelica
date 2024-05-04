@@ -69,8 +69,10 @@ public class AddLocation extends AppCompatActivity {
         String category = categorySpinner.getSelectedItem().toString();
         String city = cityEditText.getText().toString();
         String state = stateEditText.getText().toString();
-        Double latitude = Double.parseDouble(latitudeEditText.getText().toString());
-        Double longitude = Double.parseDouble(longitudeEditText.getText().toString());
+        String latitude = latitudeEditText.getText().toString();
+        String longitude = longitudeEditText.getText().toString();
+        //Double latitude = Double.parseDouble(latitudeEditText.getText().toString());
+        //Double longitude = Double.parseDouble(longitudeEditText.getText().toString());
 
         // Obtener el ID del usuario autenticado
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
