@@ -8,11 +8,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="410dp"
-        android:layout_height="367dp"
+        android:layout_width="match_parent"
+        android:layout_height="412dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/homescreen" />
+        app:srcCompat="@drawable/_f77ee16e_bf83_4d72_939a_ccf0728e2e02" />
 
     <TextView
         android:id="@+id/textView"
