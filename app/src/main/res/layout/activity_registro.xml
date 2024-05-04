@@ -9,98 +9,129 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/editTextFullName"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputFullName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/input_bg"
-            android:paddingLeft="25dp"
-            android:layout_marginBottom="8dp"
-            android:hint="Nombre Completo"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/editTextEmail"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre Completo"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/input_bg"
-            android:paddingLeft="25dp"
-            android:hint="Correo Electrónico"
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/editTextPassword"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo Electrónico"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/input_bg"
-            android:paddingLeft="25dp"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/editTextConfirmPassword"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- EditText para confirmar contraseña -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputConfirmPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/input_bg"
-            android:paddingLeft="25dp"
-            android:hint="Confirmar Contraseña"
-            android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/editTextPhoneNumber"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- EditText para el número de teléfono -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputPhoneNumber"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/input_bg"
-            android:paddingLeft="25dp"
-            android:hint="Número de Teléfono"
-            android:inputType="phone"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="16dp">
 
-        <Spinner
-            android:id="@+id/spinnerCountry"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de Teléfono"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Spinner para seleccionar el país/región -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputCountry"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/input_bg"
-            android:entries="@array/countries_array"
-            android:hint="País/Región de Residencia"
-            android:minHeight="48dp"
-            android:paddingLeft="25dp" />
+            android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/editTextDateOfBirth"
+            <Spinner
+                android:id="@+id/spinnerCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="País/Región de Residencia"
+                android:entries="@array/countries_array"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- EditText para la fecha de nacimiento -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputDateOfBirth"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/input_bg"
-            android:paddingLeft="25dp"
-            android:hint="Fecha de Nacimiento"
-            android:inputType="date"
-            android:minHeight="48dp" />
+            android:layout_marginBottom="16dp">
 
-        <CheckBox
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDateOfBirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de Nacimiento"
+                android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkBoxCommunication"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deseo recibir correos electrónicos promocionales o notificaciones de la aplicación"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="16dp"/>
 
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkBoxTerms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Acepto los términos y condiciones de uso de la aplicación"
             android:layout_marginBottom="16dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
