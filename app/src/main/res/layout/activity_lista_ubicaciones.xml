@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editTextCity"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese la ciudad"
-        android:inputType="text"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:hintTextColor="@color/primaryColor">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese la ciudad"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutCity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        app:boxBackgroundColor="@color/white"
+
+        app:hintTextColor="@color/primaryColor">
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Categoría"
+            android:backgroundTint="@color/primaryColor"
+            android:entries="@array/categorias"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutCategory"
+        android:layout_alignStart="@+id/textInputLayoutCategory"
+        android:layout_alignEnd="@+id/textInputLayoutCategory"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp"
+        android:backgroundTint="@color/primaryColor"
         android:text="Buscar"
-        android:layout_below="@id/editTextCity"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="8dp"/>
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/textViewCity"
@@ -30,12 +69,26 @@
         android:text="Ciudad:"
         android:textSize="18sp"
         android:layout_below="@id/buttonSearch"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_alignStart="@id/buttonSearch" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/textViewCity"
+        android:layout_above="@id/buttonViewRoute"
         android:scrollbars="vertical"/>
+
+    <!-- Botón para ver la ruta -->
+    <Button
+        android:id="@+id/buttonViewRoute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Ruta"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@android:color/white"/>
+
 </RelativeLayout>
