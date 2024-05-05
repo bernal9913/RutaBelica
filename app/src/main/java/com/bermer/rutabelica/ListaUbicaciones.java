@@ -167,6 +167,7 @@ public class ListaUbicaciones extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            Log.d("Error", "Error al obtener datos: " + e.getMessage().toString());
                             Toast.makeText(ListaUbicaciones.this, "Error al obtener datos", Toast.LENGTH_SHORT).show();
                         }
                     });

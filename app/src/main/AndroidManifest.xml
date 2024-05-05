@@ -17,6 +17,9 @@
         android:theme="@style/Theme.RutaBelica"
         tools:targetApi="31">
         <activity
+            android:name=".DetalleReporteActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecoverPassActivity"
             android:exported="false" />
         <activity
