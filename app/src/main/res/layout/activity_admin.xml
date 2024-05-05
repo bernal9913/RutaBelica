@@ -1,29 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
+    android:padding="16dp">
 
+    <!-- Button1admin -->
     <Button
         android:id="@+id/button1admin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="68dp"
-        android:text="Botón 1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/primaryColor"
+        android:text="Agregar Ubicación"
+        android:textColor="@android:color/white" />
 
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/button1admin"
+        android:scrollbars="vertical" />
+    <!--
     <Button
         android:id="@+id/button2admin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Botón 2"
-        app:layout_constraintStart_toStartOf="@+id/button1admin"
-        app:layout_constraintTop_toBottomOf="@+id/button1admin" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/primaryColor"
+        android:text="Ver Ruta"
+        android:textColor="@android:color/white" />
+        -->
+</RelativeLayout>
