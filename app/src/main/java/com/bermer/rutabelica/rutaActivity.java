@@ -169,7 +169,6 @@ public class rutaActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             return result.toString();
         }
-        // TODO: arreglar el api key de directions
         private ArrayList<LatLng> parsearJson(String json) {
             ArrayList<LatLng> puntosRuta = new ArrayList<>();
 
