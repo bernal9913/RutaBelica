@@ -15,4 +15,6 @@
     <color name="primaryColor">#EF5350</color>
     <color name="red_900">#B71C1C</color>
     <color name="colorError">#FF0000</color>
+    <color name="red_lg">#ff003e</color>
+    <color name="purple_ish">#8d40ff</color>
 </resources>
