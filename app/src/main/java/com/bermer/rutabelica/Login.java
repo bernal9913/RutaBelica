@@ -133,7 +133,7 @@ public class Login extends AppCompatActivity {
                                 }
                             });
                         }else {
-                            Toast.makeText(Login.this, ":(", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Correo y/o contraseña no validos", Toast.LENGTH_SHORT).show();
 
                         }
                     }
