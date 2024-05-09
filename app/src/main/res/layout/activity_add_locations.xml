@@ -91,6 +91,11 @@
             android:paddingLeft="25dp"
             android:layout_marginBottom="8dp"
             android:textSize="25dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Usar ubicación actual"
+            android:id="@+id/buttonUseLocation"/>
 
         <TextView
             android:layout_width="wrap_content"
