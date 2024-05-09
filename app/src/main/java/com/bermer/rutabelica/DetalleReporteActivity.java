@@ -44,16 +44,37 @@ public class DetalleReporteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_reporte);
         db = FirebaseFirestore.getInstance();
+
         startEverything();
         buttonSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                verificarDatos();
-                actualizarReporte();
+                if (checkBoxInexistente.isChecked()) {
+                    eliminarReporte(documentId);
+                }else{
+                    verificarDatos();
+                    actualizarReporte();
+                }
+
             }
         });
     }
-
+    private void eliminarReporte(String documentId){
+        DocumentReference documentReference = db.collection("lugares").document(documentId);
+        documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("Eliminación", "Reporte eliminado correctamente");
+                Toast.makeText(DetalleReporteActivity.this, "Reporte eliminado", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("Error", "Error al eliminar el reporte", e);
+            }
+        });
+    }
     private void actualizarReporte() {
         DocumentReference documentReference = db.collection("lugares").document(documentId);
         Map<String, Object> updates = new HashMap<>();

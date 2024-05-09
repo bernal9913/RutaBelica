@@ -1,7 +1,5 @@
 package com.bermer.rutabelica;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,13 +9,12 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.SupportMapFragment;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -126,21 +123,7 @@ public class DetalleUbicacionActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        /*
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);*/
     }
-    /*
-    @Override
-    public void onMapReady(GoogleMap googleMap){
-        mMap = googleMap;
-        LatLng ubicacion = new LatLng(latatitu, longitu);
-        mMap.addMarker(new MarkerOptions().position(ubicacion).title(titulo));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion,15));
-
-    }*/
     @Override
     protected void onResume() {
         super.onResume();
