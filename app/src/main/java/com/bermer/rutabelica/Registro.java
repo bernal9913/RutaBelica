@@ -1,7 +1,9 @@
 package com.bermer.rutabelica;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -51,6 +53,7 @@ public class Registro extends AppCompatActivity {
         // referenciar los elementos
         startEverything();
         editTextDateOfBirth.setInputType(InputType.TYPE_NULL);
+        editTextPhoneN.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         editTextDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,20 +104,21 @@ public class Registro extends AppCompatActivity {
         String dob = editTextDateOfBirth.getText().toString().trim();
         String c = spinnerCountry.getSelectedItem().toString();
 
-        if(!terms.isChecked()){{
-            Toast.makeText(Registro.this, "Debe aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
-            return;
-        }}
+
 
         if (TextUtils.isEmpty(fn) || TextUtils.isEmpty(e) || TextUtils.isEmpty(p) ||
                 TextUtils.isEmpty(rp) || TextUtils.isEmpty(pn) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(c)) {
-            Toast.makeText(Registro.this, "Todos los campos deben estar llenos y aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Registro.this, "Todos los campos deben estar llenos", Toast.LENGTH_SHORT).show();
             return;
         }
         if (!p.equals(rp)) {
             Toast.makeText(Registro.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(!terms.isChecked()){{
+            Toast.makeText(Registro.this, "Debe aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+            return;
+        }}
         // Crear la cuenta de usuario con Firebase Authentication
         mAuth.createUserWithEmailAndPassword(e, p)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -139,6 +143,10 @@ public class Registro extends AppCompatActivity {
                                         public void onSuccess(Void aVoid) {
                                             Log.d("Registro_debug", "Documento subido correctamente a Firestore con ID: " + e);
                                             finish();
+                                            Intent i = new Intent(Registro.this, ListaUbicaciones.class);
+                                            startActivity(i);
+
+
                                             //Toast.makeText(Registro.this, "Información del usuario subida exitosamente", Toast.LENGTH_SHORT).show();
                                         }
                                     })
@@ -158,4 +166,5 @@ public class Registro extends AppCompatActivity {
                 });
 
     }
+
 }
